@@ -8,7 +8,7 @@ The source code for my personal portfolio and web presence.
 - **Privacy-Focused**: Developed with automated security guardrails.
 
 ## 🛠️ Tech Stack
-- **Frontend**: HTML5, CSS3, JavaScript
+- **Frontend**: HTML5, Tailwind CSS, JavaScript
 - **Deployment**: GitHub Pages (or preferred host)
 
 ## 🔒 Development

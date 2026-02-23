@@ -1,0 +1,62 @@
+[
+  {
+    "id": "github",
+    "name": "GitHub",
+    "url": "https://github.com/pxltr30",
+    "iconClass": "fa-brands fa-github"
+  },
+  {
+    "id": "dribbble",
+    "name": "Dribbble",
+    "url": "https://dribbble.com/pxltr30",
+    "iconClass": "fa-brands fa-dribbble"
+  },
+  {
+    "id": "facebook",
+    "name": "Facebook",
+    "url": "https://www.facebook.com/pxltr30",
+    "iconClass": "fa-brands fa-facebook"
+  },
+  {
+    "id": "instagram",
+    "name": "Instagram",
+    "url": "https://www.instagram.com/pxltr30",
+    "iconClass": "fa-brands fa-instagram"
+  },
+  {
+    "id": "youtube",
+    "name": "YouTube",
+    "url": "https://www.youtube.com/@pxltr30",
+    "iconClass": "fa-brands fa-youtube"
+  },
+  {
+    "id": "tiktok",
+    "name": "TikTok",
+    "url": "https://www.tiktok.com/@pxltr30",
+    "iconClass": "fa-brands fa-tiktok"
+  },
+  {
+    "id": "threads",
+    "name": "Threads",
+    "url": "https://www.threads.net/@pxltr30",
+    "iconClass": "fa-brands fa-threads"
+  },
+  {
+    "id": "tumblr",
+    "name": "Tumblr",
+    "url": "https://pxltr30.tumblr.com",
+    "iconClass": "fa-brands fa-tumblr"
+  },
+  {
+    "id": "reddit",
+    "name": "Reddit",
+    "url": "https://www.reddit.com/user/pxltr30",
+    "iconClass": "fa-brands fa-reddit"
+  },
+  {
+    "id": "discord",
+    "name": "Discord",
+    "url": "https://discordapp.com/users/pxltr30",
+    "iconClass": "fa-brands fa-discord"
+  }
+]

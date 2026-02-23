@@ -615,6 +615,58 @@
 <!-- Updated path for navbarLoader.js -->
 
 
+<div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden lg:hidden"></div>
+<nav id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-surface shadow-lg z-50 p-6 transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden">
+    <div class="flex items-center justify-between mb-6">
+        <h3 class="text-lg font-bold text-heading">Menu</h3>
+        <button id="close-mobile-menu-button" class="text-text-light hover:text-heading focus:outline-none">
+            <i class="fa-solid fa-times h-6 w-6"></i>
+        </button>
+    </div>
+    <div class="flex flex-col gap-4">
+        <a href="/" class="text-text-light hover:text-heading no-underline">home</a>
+        <a href="/about.html" class="text-text-light hover:text-heading no-underline">about</a>
+        <a href="/services/index" class="text-text-light hover:text-heading no-underline">services</a>
+        <a href="/pricing" class="text-text-light hover:text-heading no-underline">pricing</a>
+        <a href="/store" class="text-text-light hover:text-heading no-underline">store</a>
+        <a href="/projects/index" class="text-text-light hover:text-heading no-underline">projects</a>
+        <a href="/thoughts/index" class="text-text-light hover:text-heading no-underline">blog</a>
+        <a href="/#connect-section" class="text-text-light hover:text-heading no-underline">connect</a>
+        <a href="/docs" class="text-text-light hover:text-heading no-underline">docs</a>
+        <a href="/resume/index" class="text-text-light hover:text-heading no-underline">resume</a>
+        <a href="/directory" class="text-text-light hover:text-heading no-underline">directory</a>
+    </div>
+</nav>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMobileMenuButton = document.getElementById('close-mobile-menu-button');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+        const body = document.body;
+
+        const toggleMobileMenu = () => {
+            mobileMenuOverlay.classList.toggle('hidden');
+            mobileMenu.classList.toggle('translate-x-full');
+            mobileMenuIcon.classList.toggle('fa-bars');
+            mobileMenuIcon.classList.toggle('fa-times');
+            body.classList.toggle('overflow-hidden'); // Prevent scrolling when menu is open
+        };
+
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', toggleMobileMenu);
+        }
+        if (closeMobileMenuButton) {
+            closeMobileMenuButton.addEventListener('click', toggleMobileMenu);
+        }
+        if (mobileMenuOverlay) {
+            mobileMenuOverlay.addEventListener('click', toggleMobileMenu);
+        }
+    });
+</script>
+
 <script>
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/service-worker.js')

@@ -73,8 +73,45 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 	</head>
 	<body id="site-body" class="bg-bg text-text font-mono text-base leading-relaxed m-0 p-0 transition-transform duration-300 ease-in-out">
-    <!--Navbar placeholder, will be loaded by navbarLoader.js -->
-    <div id="navbar-placeholder" class="sticky top-0 z-50"></div>
+    <header id="site-header" class="flex items-center justify-between gap-4 border-b border-border bg-surface p-4 px-4 md:px-8">
+    <div id="header-logo-container" class="flex items-center gap-4">
+        <!-- Desktop View: pxltr30 links to repo, Echo links home -->
+        <div id="desktop-logo-wrapper" class="items-center gap-2 text-xl hidden lg:flex">
+            <a id="desktop-repo-link" href="https://pxltr30.github.io/pxltr30/" class="font-bold no-underline hover:underline flex items-center gap-1">
+                <div id="logo-text-user">pxltr30</div>
+            </a>
+            <div id="logo-text-separator" class="text-text-light">/</div>
+            <a id="desktop-home-link" href="/" class="font-bold no-underline hover:underline text-heading flex items-center gap-1">
+                <div id="logo-text-project">Echo</div>
+            </a>
+        </div>
+
+        <!-- Mobile View: Entire logo links to home -->
+        <div id="mobile-logo-wrapper" class="flex items-center gap-2 text-xl lg:hidden">
+            <a id="mobile-home-link" href="/" class="font-bold no-underline hover:underline flex items-center gap-1">
+                <div id="logo-text-user">pxltr30</div>
+                <div id="logo-text-separator">/</div>
+                <div id="logo-text-project" class="text-heading">Echo</div>
+            </a>
+        </div>
+    </div>
+    <div id="desktop-navigation" class="hidden items-center gap-3 lg:flex">
+        <a id="nav-home" href="/" class="text-text-light hover:text-heading no-underline">home</a>
+        <a id="nav-about" href="/about.html" class="text-text-light hover:text-heading no-underline">about</a>
+        <a id="nav-services" href="/services/index" class="text-text-light hover:text-heading no-underline">services</a>
+        <a id="nav-pricing" href="/pricing" class="text-text-light hover:text-heading no-underline">pricing</a>
+        <a id="nav-store" href="/store" class="text-text-light hover:text-heading no-underline">store</a>
+        <a id="nav-projects" href="/projects/index" class="text-text-light hover:text-heading no-underline">projects</a>
+        <a id="nav-blog" href="/thoughts/index" class="text-text-light hover:text-heading no-underline">blog</a>
+        <a id="nav-connect" href="/#connect-section" class="text-text-light hover:text-heading no-underline">connect</a>
+        <a id="nav-docs" href="/docs" class="text-text-light hover:text-heading no-underline">docs</a>
+        <a id="nav-resume" href="/resume/index" class="text-text-light hover:text-heading no-underline">resume</a>
+        <a id="nav-directory" href="/directory" class="text-text-light hover:text-heading no-underline">directory</a>
+    </div>
+    <button id="mobile-menu-button" class="lg:hidden p-2 rounded-md text-text-light hover:text-heading focus:outline-none focus:ring-2 focus:ring-accent">
+        <i id="mobile-menu-icon" class="fa-solid fa-bars h-6 w-6"></i>
+    </button>
+</header>
     <div id="page-container" class="readme-container">
         <main id="main-content" class="mx-auto px-4 py-4 pb-8 transition-filter duration-300 ease-in-out md:px-6 lg:px-8">
             
@@ -460,7 +497,64 @@
         </main>
     </div>
 
-    <div id="footer-placeholder"></div>
+    <footer id="site-footer" class="mt-16 border-t border-border bg-surface py-12">
+    <div id="footer-container" class="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+        <div id="footer-grid" class="grid grid-cols-1 gap-12 md:grid-cols-3">
+            <!-- Brand Section -->
+            <div id="footer-brand" class="flex flex-col gap-4">
+                <div id="footer-logo-wrapper" class="flex items-center gap-2 text-xl font-bold text-heading">
+                    <i id="footer-logo-icon" class="fa-solid fa-book-open"></i>
+                    <span id="footer-logo-text">Echo</span>
+                </div>
+                <p id="footer-tagline" class="max-w-xs text-sm leading-relaxed text-text-light">
+                    Building the next generation of digital experiences through design, code, and strategy.
+                </p>
+                <div id="footer-socials" class="flex gap-4">
+                    <!-- Social links populated by socialsLoader.js -->
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div id="footer-links-container">
+                <h4 id="footer-links-title" class="mb-6 font-mono text-xs font-bold uppercase tracking-widest text-accent">Navigation</h4>
+                <nav id="footer-nav" class="grid grid-cols-2 gap-y-3 gap-x-8">
+                    <a id="footer-link-home" href="/" class="text-sm text-text-light hover:text-heading no-underline transition-colors">home</a>
+                    <a id="footer-link-about" href="/about.html" class="text-sm text-text-light hover:text-heading no-underline transition-colors">about</a>
+                    <a id="footer-link-services" href="/services/index" class="text-sm text-text-light hover:text-heading no-underline transition-colors">services</a>
+                    <a id="footer-link-projects" href="/projects/index" class="text-sm text-text-light hover:text-heading no-underline transition-colors">projects</a>
+                    <a id="footer-link-blog" href="/thoughts/index" class="text-sm text-text-light hover:text-heading no-underline transition-colors">blog</a>
+                    <a id="footer-link-resume" href="/resume/index" class="text-sm text-text-light hover:text-heading no-underline transition-colors">resume</a>
+                </nav>
+            </div>
+
+            <!-- Newsletter/Status -->
+            <div id="footer-status">
+                <h4 id="footer-status-title" class="mb-6 font-mono text-xs font-bold uppercase tracking-widest text-accent">System Status</h4>
+                <div id="status-card" class="rounded border border-border bg-bg/50 p-4">
+                    <div id="status-item" class="flex items-center gap-3">
+                        <span id="status-indicator" class="relative flex h-3 w-3">
+                            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+                            <span class="relative inline-flex h-3 w-3 rounded-full bg-green-500"></span>
+                        </span>
+                        <span id="status-text" class="text-xs font-mono text-text-light uppercase tracking-tighter">all systems operational</span>
+                    </div>
+                    <p id="status-last-updated" class="mt-3 text-[10px] font-mono text-text-light/50">Last deployment: Feb 20, 2026</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div id="footer-bottom" class="mt-12 flex flex-col items-center justify-between gap-6 border-t border-border pt-8 md:flex-row">
+            <p id="footer-copyright" class="text-xs text-text-light/60">
+                &copy; 2026 John Ogletree. All rights reserved. Built with precision.
+            </p>
+            <div id="footer-legal" class="flex gap-6">
+                <a id="footer-privacy" href="#" class="text-xs text-text-light/60 hover:text-heading no-underline transition-colors">Privacy Policy</a>
+                <a id="footer-terms" href="#" class="text-xs text-text-light/60 hover:text-heading no-underline transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+</footer>
 
 <script id="animations-script" is:inline>
     document.addEventListener('DOMContentLoaded', function() {

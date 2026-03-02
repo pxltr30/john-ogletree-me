@@ -27,7 +27,7 @@ This project utilizes the following open-source libraries, fonts, and assets. We
 ## Assets
 
 - **Profile Image / Logo**
-  - Created by: John Ogletree (@pxltr30)
+  - Created by: John Ogletree (@jvhn0gl3)
 
 ---
 

@@ -71,7 +71,19 @@
         <link rel="stylesheet" href="/assets/css/style.css">
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-	</head>
+	        <style>
+            .skill-item {
+                opacity: 0;
+                transform: translateY(20px); /* Slight slide up effect */
+                transition: opacity 0.5s ease-out, transform 0.5s ease-out, width 0.6s ease-out;
+            }
+
+            .skill-item.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        </style>
+    </head>
 	<body class="bg-bg text-text font-mono text-base leading-relaxed m-0 p-0 transition-transform duration-300 ease-in-out flex flex-col min-h-screen"><script src="https://keepandroidopen.org/banner.js"></script>
     <header id="site-header" class="sticky top-0 z-50 flex items-center justify-between gap-4 border-b border-border bg-surface p-4 px-4 md:px-8">
     <div id="header-logo-container" class="flex items-center gap-4">
@@ -597,6 +609,7 @@
                     const progressBar = entry.target.querySelector('.skill-progress');
                     const skillPercentage = entry.target.querySelector('.skill-percentage'); // Get the skill percentage span
                     const targetWidth = progressBar.getAttribute('data-progress');
+                    entry.target.classList.add('visible'); // Add the 'visible' class for animation
                     progressBar.style.width = targetWidth + '%'; // Add '%' to the width
                     skillPercentage.textContent = targetWidth + '%'; // Update the text content of the skill percentage span
                     skillObserver.unobserve(entry.target);

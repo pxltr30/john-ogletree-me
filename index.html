@@ -7,7 +7,12 @@
     <meta name="description" content="Welcome to Echo, the personal portfolio of John Ogletree. Explore my creations in web design, development, and digital strategy." />
     <meta name="keywords" content="John Ogletree, Portfolio, Web Developer, UI/UX Designer, Digital Creator, Astro, JavaScript, Georgia" />
     <meta name="author" content="John Ogletree" />
+    
     <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#E07A5F">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Echo">
 
     <link rel="icon" type="image/svg+xml" href="/assets/images/logo.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -15,13 +20,12 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://john-ogletree.me/" />
     <meta property="og:title" content="Echo | John Ogletree - Digital Creator & Designer" />
-    <meta property="og:description" content="Welcome to Echo, the personal portfolio of John Ogletree. Explore my creations in web design, development, and digital strategy." />
+    <meta property="og:description" content="Welcome to Echo, the personal portfolio of John Ogletree." />
     <meta property="og:image" content="https://example.com/social-preview.png" />
 
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://john-ogletree.me/" />
     <meta property="twitter:title" content="Echo | John Ogletree - Digital Creator & Designer" />
-    <meta property="twitter:description" content="Welcome to Echo, the personal portfolio of John Ogletree. Explore my creations in web design, development, and digital strategy." />
     <meta property="twitter:image" content="https://example.com/social-preview.png" />
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -34,136 +38,87 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
-<body class="bg-bg text-text font-mono text-base leading-relaxed m-0 p-0 transition-transform duration-300 ease-in-out flex flex-col min-h-screen">
+<body class="bg-bg text-text font-mono text-base leading-relaxed m-0 p-0 flex flex-col min-h-screen">
     <script src="https://keepandroidopen.org/banner.js"></script>
     
     <header id="site-header" class="sticky top-0 z-50 flex items-center justify-between gap-4 border-b border-border bg-surface p-4 px-4 md:px-8">
         <div id="header-logo-container" class="flex items-center gap-4">
             <div id="desktop-logo-wrapper" class="items-center gap-2 text-xl hidden lg:flex">
-                <a id="desktop-repo-link" href="https://jvhn0gl3.github.io/jvhn0gl3/" class="font-bold no-underline hover:underline flex items-center gap-1">
-                    <div id="logo-text-user">jvhn0gl3</div>
+                <a href="https://jvhn0gl3.github.io/jvhn0gl3/" class="font-bold no-underline hover:underline flex items-center gap-1">
+                    <div>jvhn0gl3</div>
                 </a>
-                <div id="logo-text-separator" class="text-text-light">/</div>
-                <a id="desktop-home-link" href="/" class="font-bold no-underline hover:underline text-heading flex items-center gap-1">
+                <div class="text-text-light">/</div>
+                <a href="/" class="font-bold no-underline hover:underline text-heading flex items-center gap-1">
                     <div id="logo-text-project">Echo</div>
                 </a>
             </div>
             <div id="mobile-logo-wrapper" class="flex items-center gap-2 text-xl lg:hidden">
-                <a id="mobile-home-link" href="/" class="font-bold no-underline hover:underline flex items-center gap-1">
-                    <div id="logo-text-user">jvhn0gl3</div>
-                    <div id="logo-text-separator">/</div>
-                    <div id="logo-text-project" class="text-heading">Echo</div>
+                <a href="/" class="font-bold no-underline hover:underline flex items-center gap-1">
+                    <div>jvhn0gl3</div>
+                    <div>/</div>
+                    <div class="text-heading">Echo</div>
                 </a>
             </div>
         </div>
+        
         <div id="desktop-navigation" class="hidden items-center gap-3 lg:flex">
-            <a id="nav-home" href="/" class="text-text-light hover:text-heading no-underline">home</a>
-            <a id="nav-about" href="/about.html" class="text-text-light hover:text-heading no-underline">about</a>
-            <a id="nav-services" href="/services/index" class="text-text-light hover:text-heading no-underline">services</a>
-            <a id="nav-pricing" href="/pricing" class="text-text-light hover:text-heading no-underline">pricing</a>
-            <a id="nav-store" href="/store" class="text-text-light hover:text-heading no-underline">store</a>
-            <a id="nav-projects" href="/projects/index" class="text-text-light hover:text-heading no-underline">projects</a>
-            <a id="nav-blog" href="/thoughts/index" class="text-text-light hover:text-heading no-underline">blog</a>
-            <a id="nav-connect" href="/#connect-section" class="text-text-light hover:text-heading no-underline">connect</a>
-            <a id="nav-docs" href="/docs" class="text-text-light hover:text-heading no-underline">docs</a>
-            <a id="nav-resume" href="/resume/index" class="text-text-light hover:text-heading no-underline">resume</a>
-            <a id="nav-directory" href="/sitemap.xml" class="text-text-light hover:text-heading no-underline">directory</a>
+            <a href="/" class="text-text-light hover:text-heading no-underline">home</a>
+            <a href="/about.html" class="text-text-light hover:text-heading no-underline">about</a>
+            <a href="/services/index" class="text-text-light hover:text-heading no-underline">services</a>
+            <a href="/pricing" class="text-text-light hover:text-heading no-underline">pricing</a>
+            <a href="/store" class="text-text-light hover:text-heading no-underline">store</a>
+            <a href="/projects/index" class="text-text-light hover:text-heading no-underline">projects</a>
+            <a href="/thoughts/index" class="text-text-light hover:text-heading no-underline">blog</a>
+            <a href="/#connect-section" class="text-text-light hover:text-heading no-underline">connect</a>
+            <a href="/docs" class="text-text-light hover:text-heading no-underline">docs</a>
+            <a href="/resume/index" class="text-text-light hover:text-heading no-underline">resume</a>
+            <a href="/sitemap.xml" class="text-text-light hover:text-heading no-underline">directory</a>
         </div>
+
         <button id="mobile-menu-button" class="lg:hidden p-2 rounded-md text-text-light hover:text-heading focus:outline-none focus:ring-2 focus:ring-accent">
             <i id="mobile-menu-icon" class="fa-solid fa-bars h-6 w-6"></i>
         </button>
     </header>
 
     <div id="page-container">
-        <main id="main-content" class="mx-auto px-4 py-4 pb-8 transition-filter duration-300 ease-in-out md:px-6 lg:px-8">
+        <main id="main-content" class="mx-auto px-4 py-4 pb-8 md:px-6 lg:px-8">
             <section id="hero-section" class="flex min-h-[60vh] flex-col items-center justify-center py-12 text-center md:py-20 lg:min-h-[70vh]">
                 <div id="hero-content" class="max-w-4xl px-4">
                     <h1 id="hero-title" class="mb-6 font-mono text-4xl font-bold leading-tight text-heading md:text-5xl lg:text-7xl">
-                        Crafting <span id="hero-title-accent" class="text-accent italic">Digital</span> Solutions with <span id="hero-title-precision" class="border-b-4 border-accent">Precision</span>
+                        Crafting <span class="text-accent italic">Digital</span> Solutions with <span class="border-b-4 border-accent">Precision</span>
                     </h1>
-                    <p id="hero-description" class="mx-auto mb-10 max-w-2xl text-lg text-text-light md:text-xl lg:text-2xl">
-                        Welcome to Echo, the personal portfolio of John Ogletree. I build modern, high-performance web experiences that blend aesthetic design with technical excellence.
+                    <p class="mx-auto mb-10 max-w-2xl text-lg text-text-light md:text-xl lg:text-2xl">
+                        Welcome to Echo. I build modern, high-performance web experiences that blend aesthetic design with technical excellence.
                     </p>
-                    <div id="hero-cta-container" class="flex flex-col items-center justify-center gap-4 sm:flex-row">
-                        <a id="hero-cta-primary" href="/projects/index" class="inline-flex w-full items-center justify-center rounded-md bg-accent px-8 py-4 font-mono font-bold text-bg transition-transform duration-200 hover:scale-105 sm:w-auto">Explore Projects</a>
-                        <a id="hero-cta-secondary" href="/#connect-section" class="inline-flex w-full items-center justify-center rounded-md border-2 border-heading px-8 py-4 font-mono font-bold text-heading transition-colors duration-200 hover:bg-heading hover:text-text sm:w-auto">Get in Touch</a>
+                    <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+                        <a href="/projects/index" class="inline-flex w-full items-center justify-center rounded-md bg-accent px-8 py-4 font-mono font-bold text-bg transition-transform duration-200 hover:scale-105 sm:w-auto">Explore Projects</a>
+                        <a href="/#connect-section" class="inline-flex w-full items-center justify-center rounded-md border-2 border-heading px-8 py-4 font-mono font-bold text-heading transition-colors duration-200 hover:bg-heading hover:text-text sm:w-auto">Get in Touch</a>
                     </div>
                 </div>
             </section>
-            
-            <h2 id="profile-heading" class="m-0 mt-14 mb-6 border-b border-border pb-2 font-mono font-medium text-heading text-xl before:mr-2 before:font-normal before:text-text-light before:content-['##'] md:text-2xl">Profile</h2>
-            <section id="profile-section" class="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-2">
-                <div id="profile-card" class="flex flex-col gap-5 rounded-lg border border-border bg-surface p-6">
-                    <div id="profile-card-header" class="flex flex-col items-start gap-6 border-b border-border pb-5 md:flex-row md:items-center">
-                        <div id="profile-info" class="flex flex-1 items-center gap-4">
-                            <img id="profile-image" src="/assets/images/logo.svg" alt="John Ogletree" class="h-[4.375rem] w-[4.375rem] rounded-full border-2 border-border object-cover" />
-                            <div id="profile-text-content" class="flex flex-col">
-                                <h3 id="profile-name" class="m-0 font-mono font-medium leading-tight text-heading text-xl md:text-2xl">John Ogletree</h3>
-                                <p id="profile-handle" class="mb-2 text-base text-text-light">jvhn0gl3</p>
-                                <div id="social-links" class="flex flex-wrap gap-4"></div>
-                            </div>
-                        </div>
-                        <div id="profile-stats" class="flex w-full flex-row gap-3 md:w-auto md:min-w-[9.375rem] md:flex-col">
-                            <div class="flex w-full flex-col items-center justify-between md:flex-row md:items-baseline">
-                                <span class="stat-value text-2xl font-bold text-heading" data-value="42">0</span>
-                                <span class="text-xs uppercase tracking-wider text-text-light">Repos</span>
-                            </div>
-                            <div class="flex w-full flex-col items-center justify-between md:flex-row md:items-baseline">
-                                <span class="stat-value text-2xl font-bold text-heading" data-value="1480">0</span>
-                                <span class="text-xs uppercase tracking-wider text-text-light">Contribs</span>
-                            </div>
-                            <div class="flex w-full flex-col items-center justify-between md:flex-row md:items-baseline">
-                                <span class="stat-value text-2xl font-bold text-heading" data-value="215">0</span>
-                                <span class="text-xs uppercase tracking-wider text-text-light">Followers</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="language-skills" class="flex flex-col gap-3 border-t border-border pt-5 md:min-w-[9.375rem]">
-                        <div class="flex w-full items-baseline justify-between">
-                            <span class="flex items-center gap-2 text-xs uppercase tracking-wider text-text-light">
-                                <span class="h-3 w-3 rounded-full" style="background-color: #f1e05a;"></span>JavaScript
-                            </span>
-                            <span class="text-lg font-medium text-heading">45%</span>
-                        </div>
-                        <div class="flex w-full items-baseline justify-between">
-                            <span class="flex items-center gap-2 text-xs uppercase tracking-wider text-text-light">
-                                <span class="h-3 w-3 rounded-full" style="background-color: #3178c6;"></span>TypeScript
-                            </span>
-                            <span class="text-lg font-medium text-heading">30%</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="skill-bars-container" class="flex flex-col gap-6">
-                    <div id="design-skills" class="grid grid-cols-1 gap-6 md:grid-cols-2">
-                        <div class="skill-item flex flex-col gap-3 rounded-lg border border-border bg-surface p-6 transition-transform duration-200 ease-out hover:-translate-y-1 hover:shadow-lg">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center gap-3">
-                                    <i class="fa-solid fa-layer-group text-accent text-xl"></i>
-                                    <span class="font-mono text-lg font-bold text-text">UI Design</span>
-                                </div>
-                                <span class="skill-percentage font-mono text-sm text-text-light">0%</span>
-                            </div>
-                            <div class="relative h-2.5 w-full rounded bg-border overflow-hidden">
-                                <div class="skill-progress absolute left-0 top-0 h-full rounded bg-accent" data-progress="90"></div>
-                            </div>
-                        </div>
-                        </div>
-                    <div id="bio-link-container">
-                        <a id="bio-link" href="/about.html" class="box-border flex w-full items-center justify-center rounded-md border border-heading bg-transparent py-3 px-6 text-center font-mono font-bold text-heading no-underline transition-colors duration-200 hover:bg-heading hover:text-text">More About Me</a>
-                    </div>
-                </div>
-            </section>
-
-            </main>
+        </main>
     </div>
 
-    <footer id="site-footer" class="mt-16 border-t border-border bg-surface py-12">
-        </footer>
-
-    <script src="/assets/js/main.js" defer></script>
-    <script src="/assets/js/sw-init.js" defer></script>
-
     <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden lg:hidden backdrop-blur-sm"></div>
-    </body>
+    <nav id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-surface shadow-lg z-50 p-6 transform translate-x-full opacity-0 scale-95 transition-all duration-300 ease-in-out lg:hidden">
+        <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center gap-2">
+                <img src="/assets/images/logo.svg" alt="Echo Logo" class="h-6 w-6">
+                <h3 class="text-lg font-bold text-heading">Menu</h3>
+            </div>
+            <button id="close-mobile-menu-button" class="text-text-light hover:text-heading focus:outline-none">
+                <i class="fa-solid fa-times h-6 w-6"></i>
+            </button>
+        </div>
+        <div class="flex flex-col gap-4">
+            <a href="/" class="text-text-light hover:text-heading no-underline">home</a>
+            <a href="/about.html" class="text-text-light hover:text-heading no-underline">about</a>
+            <a href="/projects/index" class="text-text-light hover:text-heading no-underline">projects</a>
+            <a href="/#connect-section" class="text-text-light hover:text-heading no-underline">connect</a>
+        </div>
+    </nav>
+
+    <script src="/assets/js/sw-init.js" defer></script>
+    <script src="/assets/js/main.js" defer></script>
+</body>
 </html>

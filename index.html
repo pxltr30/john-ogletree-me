@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="scroll-smooth scroll-pt-20">
+<html lang="en" class="scroll-smooth">
 <head>
     <title>Echo | John Ogletree - Digital Creator & Designer</title>
     <meta charset="UTF-8" />
@@ -18,41 +18,25 @@
 </head>
 
 <body class="bg-bg text-text font-mono flex flex-col min-h-screen">
-    <header class="sticky top-0 z-50 flex items-center justify-between border-b border-border bg-surface p-4 px-4 md:px-8">
-        <div class="flex items-center gap-4">
-            <a href="index.html" class="font-bold no-underline text-heading text-xl">jvhn0gl3 / Echo</a>
-        </div>
-        
-        <nav class="hidden lg:flex items-center gap-4">
-            <a href="index.html" class="text-text-light hover:text-heading">home</a>
-            <a href="about.html" class="text-text-light hover:text-heading">about</a>
-            <a href="#connect" class="text-text-light hover:text-heading">connect</a>
-        </nav>
-
-        <button id="mobile-menu-button" class="lg:hidden p-2 text-text-light focus:outline-none">
-            <i id="mobile-menu-icon" class="fa-solid fa-bars h-6 w-6"></i>
-        </button>
-    </header>
-
-    <main class="flex-grow mx-auto px-4 py-12">
-        <section class="text-center">
-            <h1 class="text-4xl font-bold text-heading md:text-6xl">John Ogletree</h1>
-            <p class="mt-4 text-text-light text-xl">Digital Solutions with Precision</p>
+    
+    <main class="flex-grow flex items-center justify-center mx-auto px-4 py-12">
+        <section class="text-center max-w-4xl">
+            <h1 class="text-5xl font-bold text-heading md:text-7xl mb-6">
+                John Ogletree
+            </h1>
+            <p class="text-text-light text-xl md:text-2xl leading-relaxed">
+                Crafting <span class="text-accent italic">Digital</span> Solutions with <span class="border-b-4 border-accent">Precision</span>.
+            </p>
+            <div class="mt-10 flex flex-wrap justify-center gap-4">
+                <a href="mailto:your-email@example.com" class="bg-accent text-bg px-8 py-3 rounded font-bold hover:scale-105 transition-transform">Get in Touch</a>
+                <a href="#projects" class="border-2 border-heading text-heading px-8 py-3 rounded font-bold hover:bg-heading hover:text-bg transition-colors">View Work</a>
+            </div>
         </section>
     </main>
 
-    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 z-40 hidden backdrop-blur-sm"></div>
-    <nav id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-surface z-50 p-6 transform translate-x-full opacity-0 transition-all duration-300 ease-in-out border-l border-border">
-        <div class="flex justify-between items-center mb-8">
-            <span class="font-bold text-heading">Menu</span>
-            <button id="close-mobile-menu" class="text-text-light"><i class="fa-solid fa-times"></i></button>
-        </div>
-        <div class="flex flex-col gap-6 text-lg">
-            <a href="index.html" class="hover:text-heading">home</a>
-            <a href="about.html" class="hover:text-heading">about</a>
-            <a href="#connect" class="hover:text-heading">connect</a>
-        </div>
-    </nav>
+    <footer class="p-8 border-t border-border text-center text-text-light text-sm">
+        &copy; 2026 John Ogletree / Echo
+    </footer>
 
     <script src="assets/js/sw-init.js" defer></script>
     <script src="assets/js/main.js" defer></script>

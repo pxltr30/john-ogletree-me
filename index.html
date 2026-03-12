@@ -9,24 +9,27 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="assets/js/tailwind-config.js"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FY6WZRNX8M"></script>
-    <script src="assets/js/gtag-init.js"></script>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body class="bg-bg text-text font-mono flex flex-col min-h-screen">
-    <main class="flex-grow flex items-center justify-center p-6">
-        <div class="text-center fade-in-up">
+    
+    <main class="flex-grow container mx-auto px-6 py-20">
+        <section class="text-center mb-20 fade-in-up">
             <h1 class="text-5xl font-bold text-heading md:text-7xl mb-4">John Ogletree</h1>
-            <p class="text-text-light text-xl">Digital Solutions with Precision</p>
-            <div class="mt-8">
-                <a href="mailto:hello@john-ogletree.me" class="border-2 border-accent text-accent px-6 py-2 hover:bg-accent hover:text-bg transition-all">Contact</a>
+            <p class="text-text-light text-xl max-w-2xl mx-auto">Digital Solutions with Precision</p>
+        </section>
+
+        <div id="skill-bars-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
             </div>
-        </div>
     </main>
 
+    <footer class="p-8 border-t border-border text-center text-text-light text-xs uppercase tracking-widest">
+        &copy; 2026 John Ogletree
+    </footer>
+
+    <script src="assets/js/main.js" type="module"></script>
     <script src="assets/js/sw-init.js" defer></script>
-    <script src="assets/js/main.js" defer></script>
 </body>
 </html>

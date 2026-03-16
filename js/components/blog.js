@@ -6,8 +6,7 @@ export const Blog = {
                     Log Overview
                 </h2>
                 
-                <div id="blog-grid" class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-6">
-                    ${this.posts.map(post => `
+<div id="blog-grid" class="grid grid-cols-repeat-300 gap-6">                    ${this.posts.map(post => `
                         <article>
                             <a href="${post.url}" class="group flex h-full rounded-lg border border-border bg-surface no-underline transition-transform duration-200 ease-out hover:-translate-y-1 hover:shadow-lg">
                                 <div class="flex flex-col p-6">

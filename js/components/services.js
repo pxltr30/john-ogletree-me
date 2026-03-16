@@ -6,7 +6,7 @@ export const Services = {
                     Capabilities Overview
                 </h2>
                 
-                <div id="services-grid" class="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6">
+<div id="services-grid" class="grid grid-cols-repeat-280 gap-6">
                     ${this.services.map(service => `
                         <div class="flex flex-col gap-4 rounded-lg border border-border bg-surface p-8 transition-transform duration-200 ease-out hover:-translate-y-1 hover:shadow-lg">
                             <div class="text-accent">

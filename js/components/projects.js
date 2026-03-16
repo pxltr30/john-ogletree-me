@@ -6,8 +6,7 @@ export const Projects = {
                     Creations Overview
                 </h2>
                 
-                <div id="projects-grid" class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-6">
-                    ${this.projects.map(project => `
+<div id="projects-grid" class="grid grid-cols-repeat-300 gap-6">                    ${this.projects.map(project => `
                         <div class="group flex flex-col overflow-hidden rounded-lg border border-border bg-surface transition-transform duration-200 ease-out hover:-translate-y-1 hover:shadow-lg">
                             <div class="aspect-video overflow-hidden">
                                 <img src="${project.image}" alt="${project.title}" 

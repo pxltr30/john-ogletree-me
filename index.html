@@ -63,6 +63,14 @@
                         fadeIn: {
                             '0%': { opacity: '0' },
                             '100%': { opacity: '1' }
+                        },
+                        rotate: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(360deg)' }
+                        },
+                        pulse: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.5' }
                         }
                     },
                     animation: {
@@ -72,7 +80,9 @@
                         glow: 'glow 2s ease-in-out infinite',
                         slideIn: 'slideIn 0.6s ease-out',
                         breathe: 'breathe 2s ease-in-out infinite',
-                        fadeIn: 'fadeIn 0.3s ease-out'
+                        fadeIn: 'fadeIn 0.3s ease-out',
+                        rotate: 'rotate 3s linear infinite',
+                        pulse: 'pulse 2s ease-in-out infinite'
                     }
                 }
             }
@@ -149,7 +159,7 @@
             right: 0;
             bottom: 0;
             background: rgba(0, 0, 0, 0.6);
- backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
             z-index: 999;
             opacity: 0;
             visibility: hidden;
@@ -251,6 +261,25 @@
         body.sidebar-open {
             overflow: hidden;
         }
+        
+        /* Canvas icon container */
+        .canvas-icon {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Group hover scale for canvas container */
+        .group:hover .canvas-icon canvas {
+            animation: pulse 0.5s ease-in-out;
+        }
     </style>
 </head>
 <body class="bg-bg text-text font-mono antialiased">
@@ -309,9 +338,10 @@
                         <span class="font-medium">Services</span>
                         <i class="fa-solid fa-arrow-right ml-auto text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
                     </a>
-                    <a href="#projects" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg text-text-light hover:text-heading transition-all duration-200 group">
-                        <div class="w-8 h-8 rounded-lg bg-heading/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-display-code text-heading text-sm"></i>
+                    <!-- CREATIONS NAV LINK WITH CANVAS ICON -->
+                    <a href="#projects" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg text-text-light hover:text-heading transition-all duration-200 group" id="creationsLink">
+                        <div class="w-8 h-8 rounded-lg bg-heading/10 flex items-center justify-center group-hover:scale-110 transition-transform relative overflow-hidden">
+                            <div class="canvas-icon" id="creationsCanvasIcon"></div>
                         </div>
                         <span class="font-medium">Creations</span>
                         <i class="fa-solid fa-arrow-right ml-auto text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
@@ -511,6 +541,90 @@
     </main>
 
     <script>
+        // Create canvas-based icon for Creations nav link
+        function createCanvasIcon() {
+            const container = document.getElementById('creationsCanvasIcon');
+            if (!container) return;
+            
+            // Clear container
+            container.innerHTML = '';
+            
+            // Create canvas element
+            const canvas = document.createElement('canvas');
+            canvas.width = 20;
+            canvas.height = 20;
+            canvas.style.width = '20px';
+            canvas.style.height = '20px';
+            
+            const ctx = canvas.getContext('2d');
+            
+            // Draw animated geometric creation icon
+            let frame = 0;
+            
+            function drawIcon() {
+                ctx.clearRect(0, 0, 20, 20);
+                
+                // Center coordinates
+                const cx = 10;
+                const cy = 10;
+                const time = Date.now() / 1000;
+                
+                // Draw rotating square
+                ctx.save();
+                ctx.translate(cx, cy);
+                ctx.rotate(time * 2);
+                ctx.beginPath();
+                ctx.rect(-5, -5, 10, 10);
+                ctx.strokeStyle = '#E07A5F';
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
+                ctx.restore();
+                
+                // Draw pulsing circle
+                const pulse = Math.sin(time * 3) * 0.3 + 0.7;
+                ctx.beginPath();
+                ctx.arc(cx, cy, 3 * pulse, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(61, 135, 166, ${0.5 + pulse * 0.3})`;
+                ctx.fill();
+                
+                // Draw diamond shape
+                ctx.save();
+                ctx.translate(cx, cy);
+                ctx.rotate(-time * 1.5);
+                ctx.beginPath();
+                ctx.moveTo(0, -6);
+                ctx.lineTo(4, 0);
+                ctx.lineTo(0, 6);
+                ctx.lineTo(-4, 0);
+                ctx.closePath();
+                ctx.fillStyle = '#D4C9A8';
+                ctx.fill();
+                ctx.restore();
+                
+                // Draw small dots at corners
+                for (let i = 0; i < 4; i++) {
+                    const angle = (i * Math.PI / 2) + time;
+                    const x = cx + Math.cos(angle) * 7;
+                    const y = cy + Math.sin(angle) * 7;
+                    ctx.beginPath();
+                    ctx.arc(x, y, 1.2, 0, Math.PI * 2);
+                    ctx.fillStyle = '#E07A5F';
+                    ctx.fill();
+                }
+                
+                frame++;
+                requestAnimationFrame(drawIcon);
+            }
+            
+            container.appendChild(canvas);
+            drawIcon();
+        }
+        
+        // Initialize canvas icon when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            createCanvasIcon();
+        });
+        
         // Sidebar Toggle Functionality - OVERLAY MODE
         const sidebar = document.getElementById('sidebar');
         const toggleBtn = document.getElementById('sidebarToggle');

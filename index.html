@@ -59,6 +59,10 @@
                         breathe: {
                             '0%, 100%': { transform: 'scale(1)' },
                             '50%': { transform: 'scale(1.05)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
                         }
                     },
                     animation: {
@@ -67,7 +71,8 @@
                         float: 'float 3s ease-in-out infinite',
                         glow: 'glow 2s ease-in-out infinite',
                         slideIn: 'slideIn 0.6s ease-out',
-                        breathe: 'breathe 2s ease-in-out infinite'
+                        breathe: 'breathe 2s ease-in-out infinite',
+                        fadeIn: 'fadeIn 0.3s ease-out'
                     }
                 }
             }
@@ -101,7 +106,7 @@
             transform: rotate(0deg);
         }
         
-        /* Sidebar styles */
+        /* Sidebar styles - OVERLAY MODE */
         .sidebar {
             position: fixed;
             left: 0;
@@ -111,11 +116,12 @@
             background: linear-gradient(135deg, rgba(74, 62, 56, 0.98), rgba(59, 47, 42, 0.98));
             backdrop-filter: blur(20px);
             border-right: 1px solid rgba(224, 122, 95, 0.3);
-            z-index: 100;
-            transform: translateX(-260px);
+            z-index: 1000;
+            transform: translateX(-100%);
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             overflow-y: auto;
             scrollbar-width: thin;
+            box-shadow: 4px 0 30px rgba(0, 0, 0, 0.3);
         }
         
         .sidebar.expanded {
@@ -135,15 +141,30 @@
             border-radius: 4px;
         }
         
-        /* Main content shift when sidebar is expanded */
-        .main-expanded {
-            margin-left: 280px;
-            transition: margin-left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        /* Backdrop overlay when sidebar is open */
+        .sidebar-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+ backdrop-filter: blur(4px);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
         }
         
-        .main-collapsed {
-            margin-left: 20px;
-            transition: margin-left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        .sidebar-backdrop.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Main content - always full width (no shift) */
+        .main-content {
+            margin-left: 0;
+            transition: all 0.3s ease;
         }
         
         /* Toggle button */
@@ -151,9 +172,9 @@
             position: fixed;
             left: 20px;
             top: 20px;
-            z-index: 101;
-            width: 44px;
-            height: 44px;
+            z-index: 1001;
+            width: 48px;
+            height: 48px;
             background: linear-gradient(135deg, #E07A5F, #3D87A6);
             border-radius: 50%;
             display: flex;
@@ -169,8 +190,13 @@
             box-shadow: 0 6px 20px rgba(224,122,95,0.4);
         }
         
-        .sidebar-toggle.expanded {
-            left: 270px;
+        /* Rotating icon animation */
+        .rotate-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .sidebar-toggle.expanded .rotate-icon {
+            transform: rotate(90deg);
         }
         
         /* Nav link animations */
@@ -216,54 +242,23 @@
             scroll-padding-top: 2rem;
         }
         
-        /* Rotating icon animation */
-        .rotate-icon {
-            transition: transform 0.3s ease;
-        }
-        
-        .sidebar-toggle.expanded .rotate-icon {
-            transform: rotate(180deg);
-        }
-        
         /* Hover glow effect */
         .glow-on-hover:hover {
             filter: drop-shadow(0 0 8px rgba(224,122,95,0.6));
         }
         
-        /* Welcome overlay for first-time visitors */
-        .welcome-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.85);
-            backdrop-filter: blur(8px);
-            z-index: 200;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .welcome-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .welcome-card {
-            background: linear-gradient(135deg, #4A3E38, #3B2F2A);
-            border: 1px solid rgba(224,122,95,0.5);
-            max-width: 400px;
-            animation: slideIn 0.5s ease-out;
+        /* Prevent body scroll when sidebar is open */
+        body.sidebar-open {
+            overflow: hidden;
         }
     </style>
 </head>
-<body class="bg-bg text-text font-mono antialiased overflow-x-hidden">
+<body class="bg-bg text-text font-mono antialiased">
 
-    <!-- SURPRISE: VERTICAL SIDEBAR NAVIGATION (HIDDEN BY DEFAULT) -->
+    <!-- Backdrop Overlay -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+    
+    <!-- SURPRISE: OVERLAY SIDEBAR NAVIGATION -->
     <aside class="sidebar" id="sidebar">
         <div class="flex flex-col h-full">
             <!-- Sidebar Header -->
@@ -379,11 +374,11 @@
     
     <!-- Sidebar Toggle Button -->
     <div class="sidebar-toggle" id="sidebarToggle">
-        <i class="fa-solid fa-bars text-text text-sm rotate-icon"></i>
+        <i class="fa-solid fa-bars text-text text-lg rotate-icon"></i>
     </div>
 
-    <!-- MAIN CONTENT -->
-    <main id="mainContent" class="main-collapsed">
+    <!-- MAIN CONTENT - No margin shift, full width -->
+    <main class="main-content">
         <div class="mx-auto max-w-7xl px-4 md:px-6 lg:px-8 py-8">
             <!-- HERO SECTION -->
             <section id="hero" class="flex min-h-[60vh] flex-col items-center justify-center py-12 text-center md:py-20 lg:min-h-[70vh] scroll-mt-8">
@@ -516,29 +511,49 @@
     </main>
 
     <script>
-        // Sidebar Toggle Functionality - HIDDEN BY DEFAULT
+        // Sidebar Toggle Functionality - OVERLAY MODE
         const sidebar = document.getElementById('sidebar');
         const toggleBtn = document.getElementById('sidebarToggle');
-        const mainContent = document.getElementById('mainContent');
+        const backdrop = document.getElementById('sidebarBackdrop');
+        const body = document.body;
         
-        let isExpanded = false; // Start collapsed (hidden)
+        let isExpanded = false;
+        
+        function openSidebar() {
+            sidebar.classList.add('expanded');
+            backdrop.classList.add('active');
+            toggleBtn.classList.add('expanded');
+            body.classList.add('sidebar-open');
+            isExpanded = true;
+        }
+        
+        function closeSidebar() {
+            sidebar.classList.remove('expanded');
+            backdrop.classList.remove('active');
+            toggleBtn.classList.remove('expanded');
+            body.classList.remove('sidebar-open');
+            isExpanded = false;
+        }
         
         toggleBtn.addEventListener('click', () => {
-            isExpanded = !isExpanded;
             if (isExpanded) {
-                sidebar.classList.add('expanded');
-                mainContent.classList.remove('main-collapsed');
-                mainContent.classList.add('main-expanded');
-                toggleBtn.classList.add('expanded');
+                closeSidebar();
             } else {
-                sidebar.classList.remove('expanded');
-                mainContent.classList.remove('main-expanded');
-                mainContent.classList.add('main-collapsed');
-                toggleBtn.classList.remove('expanded');
+                openSidebar();
             }
         });
         
-        // Smooth scroll for sidebar links
+        // Close sidebar when clicking backdrop
+        backdrop.addEventListener('click', closeSidebar);
+        
+        // Close sidebar when pressing Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && isExpanded) {
+                closeSidebar();
+            }
+        });
+        
+        // Smooth scroll for sidebar links and close sidebar after navigation
         document.querySelectorAll('.sidebar a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -546,15 +561,10 @@
                 if (targetId === '#') return;
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
-                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    // Auto-collapse sidebar on mobile after selection
-                    if (window.innerWidth < 1024 && isExpanded) {
-                        sidebar.classList.remove('expanded');
-                        mainContent.classList.remove('main-expanded');
-                        mainContent.classList.add('main-collapsed');
-                        toggleBtn.classList.remove('expanded');
-                        isExpanded = false;
-                    }
+                    closeSidebar();
+                    setTimeout(() => {
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 300);
                 }
             });
         });
